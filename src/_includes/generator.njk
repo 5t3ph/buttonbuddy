@@ -1,0 +1,110 @@
+<div class="workspace">
+  <div class="canvas">
+    <button type="button">{% include "buddy.njk" %}Button</button>
+  </div>
+
+  <fieldset aria-describedby="results-description" class="controls">
+    <div>
+      <legend>Button Colors</legend>
+      <p id="results-description">
+        Update the color values to re-calculate the associated contrast ratio results shown in the
+        next section.
+      </p>
+      <label class="switch">
+        <input type="checkbox" />
+        <span class="switch-control"></span>
+        Use text input
+      </label>
+      <label class="color">
+        --surface:
+        <input name="surface" type="color" value="#27272c" />
+        <span class="color-control"></span>
+      </label>
+      <label class="color">
+        --background:
+        <input name="background" type="color" value="#00a4b6" />
+        <span class="color-control"></span>
+      </label>
+      <label class="color">
+        --color:
+        <input name="color" type="color" value="#222222" />
+        <span class="color-control"></span>
+      </label>
+      <label class="color">
+        --focus-background:
+        <input name="focus-background" type="color" value="#ffffff" />
+        <span class="color-control"></span>
+      </label>
+      <label class="color">
+        --focus-color:
+        <input name="focus-color" type="color" value="#222222" />
+        <span class="color-control"></span>
+      </label>
+    </div>
+    <button>Copy to clipboard</button>
+    <textarea readonly></textarea>
+  </fieldset>
+
+  <div class="results">
+    <label class="switch">
+      <input type="checkbox" value="large" />
+      <span class="switch-control"></span>
+      Large text ratio
+    </label>
+    <ul>
+      <li>
+        Surface vs. Background
+        <strong
+          id="surface-background"
+          data-ratio="3.0"
+          data-foreground="background"
+          data-background="surface"
+          ><span></span><small>/3.0</small></strong
+        >
+      </li>
+      <li>
+        Background vs. Text Color
+        <strong
+          id="background-color"
+          data-ratio="4.5"
+          data-foreground="color"
+          data-background="background"
+          ><span></span><small>/4.5</small></strong
+        >
+      </li>
+      <li>
+        Surface vs. Focus Background
+        <strong
+          id="surface-focus-background"
+          data-ratio="3.0"
+          data-foreground="focus-background"
+          data-background="surface"
+          ><span></span><small>/3.0</small></strong
+        >
+      </li>
+      <li>
+        Focus Background vs. Text Color
+        <strong
+          id="focus-background-color"
+          data-ratio="4.5"
+          data-foreground="focus-color"
+          data-background="focus-background"
+        >
+          <span></span><small>/4.5</small>
+        </strong>
+      </li>
+      <li>
+        Background vs. Focus Background
+        <strong
+          id="background-focus-background"
+          data-ratio="3.0"
+          data-foreground="focus-background"
+          data-background="background"
+        >
+          <span></span><small>/3.0</small>
+        </strong>
+      </li>
+    </ul>
+  </div>
+</div>
+<p><a href="https://moderncss.dev/css-button-styling-guide/">Full guide to button styling</a> •&nbsp;<a href="https://github.com/5t3ph/buttonbuddy/issues">File an issue on GitHub</a>.</p>

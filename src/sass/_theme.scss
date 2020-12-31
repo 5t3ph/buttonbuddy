@@ -1,0 +1,54 @@
+$tdbc-color-primary: #ab79d6 !default;
+$tdbc-color-secondary: #d367c1 !default;
+$tdbc-color-background: #27272c;
+$tdbc-color-background-alt: scale-color($tdbc-color-background, $lightness: -15%);
+
+$tdbc-brand-colors: (
+  "primary": $tdbc-color-primary,
+  "secondary": $tdbc-color-secondary,
+) !default;
+
+$tdbc-extended-colors: map-merge(
+  $tdbc-brand-colors,
+  (
+    "yellow": #dedf40,
+    "green": #6fe96c,
+    "blue": #00a4b6,
+  )
+);
+
+$tdbc-color-body: scale-color($tdbc-color-primary, $lightness: 50%, $saturation: -70%) !default;
+$tdbc-color-gray: mix(#f9f9f9, $tdbc-color-body, 70%) !default;
+
+$tdbc-colors: map-merge(
+  $tdbc-extended-colors,
+  (
+    "text": $tdbc-color-body,
+    "background": $tdbc-color-background,
+    "background-alt": $tdbc-color-background-alt,
+    "light": #fff,
+    "dark": rgba(black, 0.87),
+    "gray": $tdbc-color-gray,
+  )
+);
+
+@function tdbc-color($key) {
+  @return map-get($tdbc-colors, $key);
+}
+
+$tdbc-gradient: linear-gradient(
+  var(--tdbc-gradient-angle),
+  tdbc-color("secondary") 10%,
+  tdbc-color("yellow") 25%,
+  tdbc-color("green") 50%,
+  tdbc-color("blue") 75%,
+  tdbc-color("primary") 90%
+);
+
+:root {
+  @each $key, $color in $tdbc-colors {
+    --color-#{$key}: #{$color};
+  }
+
+  --tdbc-gradient-angle: 90deg;
+}

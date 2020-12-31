@@ -1,0 +1,35 @@
+section {
+  display: grid;
+  grid-gap: 1.5rem;
+  place-content: center;
+  justify-items: center;
+  min-height: 100vh;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+
+  &:first-of-type {
+    min-height: calc(100vh - 6rem);
+
+    p {
+      max-width: 45ch;
+      text-align: center;
+    }
+  }
+
+  > p:first-of-type strong {
+    color: var(--color-yellow);
+    font-size: 1.15em;
+  }
+
+  p {
+    font-size: 1.35rem;
+  }
+}
+
+code:not([class*="language"]) {
+  display: inline-block;
+  padding: 0 0.15em;
+  color: tdbc-color("secondary");
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 0.85em;
+}

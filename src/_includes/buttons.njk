@@ -1,0 +1,9 @@
+{% for button in collections.allButtons %}
+<section aria-label="{{ button.data.label }}">
+  <blockquote aria-label="Buddy says:">
+    <p><span>{{ button.data.speech }}</span></p>
+  </blockquote>
+  <span class="buddybtn" aria-hidden="true">{% include "buddy.njk" %}Button</span>
+  {{ button.templateContent | safe }}
+</section>
+{% endfor %}
