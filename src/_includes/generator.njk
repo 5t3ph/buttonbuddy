@@ -10,34 +10,34 @@
         Update the color values to re-calculate the associated contrast ratio results shown in the
         next section.
       </p>
-      <label class="switch">
-        <input type="checkbox" />
+      <label for="text-inputs" class="switch">
+        <input id="text-inputs" type="checkbox" />
         <span class="switch-control"></span>
         Use text input
       </label>
-      <label class="color">
+      <label for="surface" class="color">
         --surface:
-        <input name="surface" type="color" value="#27272c" />
+        <input id="surface" name="surface" type="color" value="#27272c" />
         <span class="color-control"></span>
       </label>
-      <label class="color">
+      <label for="background" class="color">
         --background:
-        <input name="background" type="color" value="#00a4b6" />
+        <input id="background" name="background" type="color" value="#00a4b6" />
         <span class="color-control"></span>
       </label>
-      <label class="color">
+      <label for="color" class="color">
         --color:
-        <input name="color" type="color" value="#222222" />
+        <input id="color" name="color" type="color" value="#222222" />
         <span class="color-control"></span>
       </label>
-      <label class="color">
+      <label for="focus-background" class="color">
         --focus-background:
-        <input name="focus-background" type="color" value="#ffffff" />
+        <input id="focus-background" name="focus-background" type="color" value="#ffffff" />
         <span class="color-control"></span>
       </label>
-      <label class="color">
+      <label for="focus-color" class="color">
         --focus-color:
-        <input name="focus-color" type="color" value="#222222" />
+        <input id="focus-color" name="focus-color" type="color" value="#222222" />
         <span class="color-control"></span>
       </label>
     </div>
@@ -51,9 +51,9 @@
       <span class="switch-control"></span>
       Large text ratio
     </label>
-    <ul role="list">
+    <ul role="list" aria-label="Contrast ratio results" aria-describedby="results-summary">
       <li>
-        Surface vs. Background
+        Surface vs. Background <span class="status">- Passing</span>
         <strong
           id="surface-background"
           data-ratio="3.0"
@@ -63,7 +63,7 @@
         >
       </li>
       <li>
-        Background vs. Text Color
+        Background vs. Text Color <span class="status">- Passing</span>
         <strong
           id="background-color"
           data-ratio="4.5"
@@ -73,7 +73,7 @@
         >
       </li>
       <li>
-        Surface vs. Focus Background
+        Surface vs. Focus Background <span class="status">- Passing</span>
         <strong
           id="surface-focus-background"
           data-ratio="3.0"
@@ -83,7 +83,7 @@
         >
       </li>
       <li>
-        Focus Background vs. Text Color
+        Focus Background vs. Text Color <span class="status">- Passing</span>
         <strong
           id="focus-background-color"
           data-ratio="4.5"
@@ -94,7 +94,7 @@
         </strong>
       </li>
       <li>
-        Background vs. Focus Background
+        Background vs. Focus Background <span class="status">- Passing</span>
         <strong
           id="background-focus-background"
           data-ratio="3.0"
@@ -105,6 +105,7 @@
         </strong>
       </li>
     </ul>
+    <span id="results-summary"></span>
   </div>
 </div>
 <p><a href="https://moderncss.dev/css-button-styling-guide/">Full guide to button styling</a> •&nbsp;<a href="https://github.com/5t3ph/buttonbuddy/issues">File an issue on GitHub</a>.</p>

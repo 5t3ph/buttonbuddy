@@ -5,7 +5,6 @@ const canvas = document.querySelector(".canvas");
 const buddy = document.querySelector("#generator button");
 const buddyFace = buddy.querySelector("svg");
 let values = {};
-let ratios = [];
 
 const updateColorCopy = (value, name) => {
   values = { ...values, [`--${name}`]: value };
@@ -29,7 +28,9 @@ const updateContrastRatio = (results, color, altAttr) => {
     result.querySelector("span").innerHTML = contrast;
 
     const icon = contrast / 100 >= ratio / 100 ? "✅" : "🚫";
+    const status = contrast / 100 >= ratio / 100 ? "- Passing" : "- Invalid";
     result.parentElement.setAttribute("data-icon", icon);
+    result.parentElement.querySelector(".status").innerText = status;
   });
 };
 
@@ -66,6 +67,7 @@ const watchColorPicker = (event) => {
   });
 
   const invalid = ratios.filter((ratio) => ratio === "🚫");
+  const valid = ratios.filter((ratio) => ratio === "✅");
   buddyFace.setAttribute("class", "");
   if (!invalid.length) {
     buddyFace.classList.add("visible");
@@ -74,6 +76,9 @@ const watchColorPicker = (event) => {
   } else {
     buddyFace.classList.add("frown");
   }
+
+  const resultsSummary = document.querySelector("#results-summary");
+  resultsSummary.innerText = `There are ${valid.length} passing ratios and ${invalid.length} invalid ratios.`;
 };
 
 colorPickers.forEach((picker) => {
