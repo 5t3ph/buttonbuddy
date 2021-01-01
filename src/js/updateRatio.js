@@ -1,7 +1,7 @@
 import updateContrast from "./updateColors";
 
 const ratioSwitch = document.querySelector(".results .switch");
-const ratioColors = document.querySelectorAll('[id*="color"]');
+const ratioColors = document.querySelectorAll("[data-ratio]");
 
 const updateRatio = (ratio) => {
   ratioColors.forEach((result) => {
