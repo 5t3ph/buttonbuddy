@@ -1,4 +1,36 @@
 const isProd = window.location.host.includes("buttonbuddy");
+let clickEvents = {
+  ".controls button": "Copied",
+};
+const changeEvents = {
+  "#text-inputs": "Text Inputs",
+  ".results input": "Large Text",
+};
+document.querySelectorAll(".color-input").forEach((e) => {
+  clickEvents = { ...clickEvents, [`#${e.id}`]: "Change Color" };
+});
+
+const triggerEvent = (element, label, type) => {
+  element.addEventListener(
+    type,
+    () => {
+      if (isProd) plausible(label);
+    },
+    { once: true },
+  );
+};
+
+const addEvents = (events, type) => {
+  Object.entries(events).forEach((event) => {
+    const element = event[0];
+    const label = event[1];
+    const trigger = document.querySelector(element);
+    triggerEvent(trigger, label, type);
+  });
+};
+
+addEvents(clickEvents, "click");
+addEvents(changeEvents, "change");
 
 if ("IntersectionObserver" in window) {
   const generatorObserver = new IntersectionObserver(
@@ -25,40 +57,4 @@ if ("IntersectionObserver" in window) {
     },
   );
   aboutObserver.observe(document.getElementById("about"));
-
-  const clickEvents = {
-    ".controls button": "Copied",
-  };
-  const changeEvents = {
-    "#text-inputs": "Text Inputs",
-    ".results input": "Large Text",
-  };
-
-  const triggerEvent = (element, label, type) => {
-    element.addEventListener(
-      type,
-      () => {
-        if (isProd) plausible(label);
-      },
-      { once: true },
-    );
-  };
-
-  document
-    .querySelectorAll(".color-input")
-    .forEach((e) => triggerEvent(e, "Color Change", "change"));
-
-  Object.entries(changeEvents).forEach((event) => {
-    const element = event[0];
-    const label = event[1];
-    const trigger = document.querySelector(element);
-    triggerEvent(trigger, label, "change");
-  });
-
-  Object.entries(clickEvents).forEach((event) => {
-    const element = event[0];
-    const label = event[1];
-    const trigger = document.querySelector(element);
-    triggerEvent(trigger, label, "click");
-  });
 }
