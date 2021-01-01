@@ -1,6 +1,9 @@
 const sections = document.querySelectorAll("section");
 
 if ("IntersectionObserver" in window && sections) {
+  const windowHeight = document.documentElement.clientHeight;
+  const threshold = windowHeight < 800 ? 0.25 : 0.65;
+
   const sectionsObserver = new IntersectionObserver(
     (sections) => {
       const section = sections[0];
@@ -8,7 +11,7 @@ if ("IntersectionObserver" in window && sections) {
       const speech = target.querySelector("blockquote");
       const svg = target.querySelector("svg");
 
-      if (section.intersectionRatio >= 0.45) {
+      if (section.intersectionRatio >= threshold) {
         speech.classList.add("visible");
         svg.classList.add("visible");
       } else {
@@ -16,7 +19,7 @@ if ("IntersectionObserver" in window && sections) {
       }
     },
     {
-      threshold: 0.45,
+      threshold: threshold,
     },
   );
   sections.forEach((section) => {
