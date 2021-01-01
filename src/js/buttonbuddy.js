@@ -8,7 +8,7 @@ if ("IntersectionObserver" in window && sections) {
       const speech = target.querySelector("blockquote");
       const svg = target.querySelector("svg");
 
-      if (section.intersectionRatio >= 0.75) {
+      if (section.intersectionRatio >= 0.45) {
         speech.classList.add("visible");
         svg.classList.add("visible");
       } else {
@@ -16,7 +16,7 @@ if ("IntersectionObserver" in window && sections) {
       }
     },
     {
-      threshold: 0.75,
+      threshold: 0.45,
     },
   );
   sections.forEach((section) => {

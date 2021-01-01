@@ -61,35 +61,3 @@ button,
     color: var(--focus-color);
   }
 }
-
-svg.visible ellipse:last-of-type {
-  transform: scale(1, 1);
-  transform-origin: 90% 20%;
-  animation: wink 480ms ease-in-out 1.5s 1 forwards;
-}
-
-svg.happy path,
-svg.frown path {
-  fill: transparent;
-  stroke-width: 0.1em;
-}
-
-svg.frown path {
-  transform: scaleY(-1);
-  transform-origin: 50% 80%;
-}
-
-@keyframes wink {
-  0%,
-  20%,
-  70% {
-    transform: scale(1.5, 0.25);
-  }
-
-  30%,
-  50%,
-  90%,
-  100% {
-    transform: scale(1, 1);
-  }
-}

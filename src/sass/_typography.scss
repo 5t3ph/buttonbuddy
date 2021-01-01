@@ -1,0 +1,47 @@
+@use "button";
+
+h1 {
+  display: inline-flex;
+  align-items: center;
+
+  > span {
+    --background: var(--color-light);
+    --color: var(--color-background);
+    --border-radius: 0.15em;
+
+    @include button.button-core;
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+
+  small {
+    font-size: 0.5em;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    line-height: 1;
+    white-space: nowrap;
+  }
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--color-yellow);
+  text-align: center;
+  font-weight: 500;
+  line-height: 1;
+}
+
+p {
+  max-width: 60ch;
+}
+
+a {
+  color: inherit;
+
+  &:focus {
+    outline: 2px dotted;
+  }
+}
+
+strong {
+  font-weight: 500;
+}

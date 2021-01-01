@@ -39,8 +39,6 @@ const updateContrast = (color, name) => {
 
   updateContrastRatio(foregrounds, color, "background");
   updateContrastRatio(backgrounds, color, "foreground");
-
-  console.log(ratios);
 };
 
 const watchColorPicker = (event) => {
