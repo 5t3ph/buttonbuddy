@@ -1,9 +1,9 @@
 import colorContrast from "color-contrast";
+import { updateRatioIndicators } from "./updateRatio";
 
 const colorPickers = document.querySelectorAll('input[type="color"]');
 const canvas = document.querySelector(".canvas");
 const buddy = document.querySelector("#generator button");
-const buddyFace = buddy.querySelector("svg");
 let values = {};
 
 const updateColorCopy = (value, name) => {
@@ -57,28 +57,7 @@ const watchColorPicker = (event) => {
 
   updateColorCopy(value, name);
   updateContrast(value, name);
-
-  const ratioIcons = document.querySelectorAll("[data-icon]");
-
-  let ratios = [];
-  ratioIcons.forEach((ratio) => {
-    const icon = ratio.getAttribute("data-icon");
-    ratios.push(icon);
-  });
-
-  const invalid = ratios.filter((ratio) => ratio === "🚫");
-  const valid = ratios.filter((ratio) => ratio === "✅");
-  buddyFace.setAttribute("class", "");
-  if (!invalid.length) {
-    buddyFace.classList.add("visible");
-  } else if (invalid.length === 1) {
-    buddyFace.classList.add("happy");
-  } else {
-    buddyFace.classList.add("frown");
-  }
-
-  const resultsSummary = document.querySelector("#results-summary");
-  resultsSummary.innerText = `There are ${valid.length} passing ratios and ${invalid.length} invalid ratios.`;
+  updateRatioIndicators();
 };
 
 colorPickers.forEach((picker) => {
@@ -93,8 +72,4 @@ colorPickers.forEach((picker) => {
 updateContrast("#00a4b6", "background");
 updateContrast("#ffffff", "focus-background");
 
-buddyFace.addEventListener("animationend", () => {
-  buddyFace.classList.remove("visible");
-});
-
-export default updateContrast;
+export { updateContrast };
