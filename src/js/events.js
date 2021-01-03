@@ -14,7 +14,15 @@ const triggerEvent = (element, label, type) => {
   element.addEventListener(
     type,
     () => {
-      if (isProd) plausible(label);
+      if (isProd) {
+        if (label === "Change Color") {
+          plausible(label, {
+            props: { Color: element.id, Type: element.type },
+          });
+        } else {
+          plausible(label);
+        }
+      }
     },
     { once: true },
   );
@@ -48,12 +56,15 @@ if ("IntersectionObserver" in window) {
 
   const aboutObserver = new IntersectionObserver(
     (entries) => {
-      if (entries[0].intersectionRatio <= 0.6) return;
+      if (!entries[0].intersectionRatio > 0) return;
       aboutObserver.unobserve(entries[0].target);
+
       if (isProd) plausible("End of Article");
     },
     {
-      threshold: 0.6,
+      threshold: 0,
+      rootMargin: "0px 0px -70% 0px",
+      root: null,
     },
   );
   aboutObserver.observe(document.getElementById("about"));
