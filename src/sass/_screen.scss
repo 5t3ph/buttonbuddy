@@ -2,14 +2,6 @@ header {
   display: flex;
   flex-wrap: wrap;
   padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-
-  @media (min-width: 40rem) {
-    position: sticky;
-    top: 0;
-    background-color: var(--color-background);
-    z-index: 1;
-  }
 
   h1,
   nav {
