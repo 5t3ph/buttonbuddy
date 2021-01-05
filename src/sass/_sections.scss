@@ -44,9 +44,10 @@ section {
 
 blockquote {
   --t: rgba(255, 255, 255, 0);
+  --y: 50%;
 
   z-index: 1;
-  transform: translateY(50%);
+  transform: translateZ(0) translateY(var(--y));
   opacity: 0;
   transition: all 220ms 400ms ease-in;
   display: inline-grid;
@@ -91,12 +92,12 @@ blockquote {
   }
 
   &.visible {
+    --y: 0;
+
     &,
     p span {
       opacity: 1;
     }
-
-    transform: translateY(0);
   }
 }
 
