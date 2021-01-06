@@ -46,10 +46,6 @@ blockquote {
   --t: rgba(255, 255, 255, 0);
 
   z-index: 1;
-  transform: translateY(50%);
-  opacity: 0;
-  transition: none 220ms 400ms ease-in;
-  transition-property: transform, opacity;
   display: inline-grid;
   position: relative;
   padding: 1em 1.5em;
@@ -86,17 +82,27 @@ blockquote {
     line-height: 1.3;
 
     span {
-      opacity: 0;
       transition: opacity 220ms 650ms ease-in;
     }
   }
 
-  &.visible {
-    transform: translateY(0);
+  @media (prefers-reduced-motion: no-preference) {
+    transform: translateY(50%);
+    transition: none 220ms 400ms ease-in;
+    transition-property: transform, opacity;
 
     &,
     p span {
-      opacity: 1;
+      opacity: 0;
+    }
+
+    &.visible {
+      transform: translateY(0);
+
+      &,
+      p span {
+        opacity: 1;
+      }
     }
   }
 }
